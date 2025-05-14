@@ -104,10 +104,7 @@ const Login: React.FC = () => {
           </div>
         </div>
         
-        <div className="mt-6 text-center text-sm text-muted-foreground">
-          <p>Demo credentials: admin / admin123</p>
-          <p className="mt-1">Staff: ritesh123 / ritesh123</p>
-        </div>
+
       </motion.div>
     </div>
   );
