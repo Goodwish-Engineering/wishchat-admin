@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
-import { MessageCircle } from 'lucide-react';
+
+import logoImage from '../assets/wishchatlogo.png';
 import ThemeToggle from '../components/ui/ThemeToggle';
 import toast from 'react-hot-toast';
 
@@ -49,9 +50,14 @@ const Login: React.FC = () => {
         className="w-full max-w-md"
       >
         <div className="text-center mb-8">
-          <div className="inline-flex p-4 rounded-full bg-primary/10 text-primary mb-4">
-            <MessageCircle size={32} />
-          </div>
+           <div className="inline-flex p-4 rounded-full bg-primary/10 text-primary mb-4">
+      <img 
+        src={logoImage} 
+        alt="Custom Logo" 
+        width={48} 
+        height={48}
+      />
+    </div>
           <h1 className="text-2xl font-bold">WishChat Admin Dashboard</h1>
           <p className="text-muted-foreground mt-2">Login to access the dashboard</p>
         </div>
