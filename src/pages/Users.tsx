@@ -265,7 +265,7 @@ const UsersPage: React.FC = () => {
                     <th className="p-4 text-left font-medium text-muted-foreground">Username</th>
                     <th className="p-4 text-left font-medium text-muted-foreground">Email</th>
                     <th className="p-4 text-left font-medium text-muted-foreground">Role</th>
-                    <th className="p-4 text-left font-medium text-muted-foreground">Status</th>
+                    {/* <th className="p-4 text-left font-medium text-muted-foreground">Status</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -290,7 +290,7 @@ const UsersPage: React.FC = () => {
                           <span>{user.is_superuser ? 'Super Admin' : 'Staff'}</span>
                         </div>
                       </td>
-                      <td className="p-4">
+                      {/* <td className="p-4">
                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                           user.is_active 
                             ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
@@ -302,7 +302,7 @@ const UsersPage: React.FC = () => {
                           }
                           {user.is_active ? 'Active' : 'Inactive'}
                         </span>
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
                 </tbody>
