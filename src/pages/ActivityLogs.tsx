@@ -56,8 +56,8 @@ const ActivityLogs: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header with search */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <h1 className="text-2xl font-semibold">Activity Logs</h1>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 dark:text-white">
+        <h1 className="text-xl font-semibold ">Activity Logs</h1>
         
         <div className="flex items-center space-x-4">
           <div className="relative flex-1">

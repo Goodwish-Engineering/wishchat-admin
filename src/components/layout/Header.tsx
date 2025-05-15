@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
       <motion.h1 
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-xl font-semibold"
+        className="text-xl font-semibold dark:text-white"
       >
         {title}
       </motion.h1>
@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
         
         <div className="flex items-center space-x-3">
           <div className="hidden md:block text-right">
-            <p className="text-sm font-medium">{user?.first_name} {user?.last_name}</p>
+            <p className="text-sm font-medium dark:text-white">{user?.first_name} {user?.last_name}</p>
             <p className="text-xs text-muted-foreground">
               {user?.is_superuser ? 'Super Admin' : 'Staff'}
             </p>

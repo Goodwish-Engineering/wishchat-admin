@@ -89,8 +89,8 @@ const Analytics: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header with filters */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <h1 className="text-2xl font-semibold">Analytics & Reports</h1>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 dark:text-white">
+        <h1 className="text-xl font-semibold ">Analytics & Reports</h1>
         
         <div className="flex items-center space-x-2">
           <div className="flex items-center">
@@ -98,7 +98,7 @@ const Analytics: React.FC = () => {
             <select
               value={selectedMonth}
               onChange={(e) => setSelectedMonth(e.target.value)}
-              className="input py-1 h-auto"
+              className="input py-1 h-auto "
             >
               {monthOptions.map(option => (
                 <option key={option.value} value={option.value}>

@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { 
-  LayoutDashboard, 
-  Building2, 
-  MessageCircle, 
-  Tag, 
-  BarChart3, 
-  ClipboardList, 
-  Users, 
-  FileKey, 
-  ChevronLeft, 
+import {
+  LayoutDashboard,
+  Building2,
+  MessageCircle,
+  Tag,
+  BarChart3,
+  ClipboardList,
+  Users,
+  FileKey,
+  ChevronLeft,
   Menu,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../../contexts/AuthContext';
+import { useSidebarState } from '../../contexts/SidebarContext'; // Import the context
 import ThemeToggle from '../ui/ThemeToggle';
 import { cn } from '../../utils/cn';
+import logo from '../../assets/wishchatlogo.png';
 
 interface SidebarLinkProps {
   to: string;
@@ -27,19 +29,19 @@ interface SidebarLinkProps {
 const SidebarLink: React.FC<SidebarLinkProps> = ({ to, icon, label, collapsed }) => {
   const location = useLocation();
   const isActive = location.pathname === to || location.pathname.startsWith(`${to}/`);
-  
+
   return (
     <NavLink
       to={to}
       className={({ isActive }) => cn(
         'flex items-center px-4 py-3 rounded-md my-1 transition-colors duration-200',
-        isActive 
-          ? 'bg-primary/10 text-primary font-medium' 
+        isActive
+          ? 'bg-primary/10 text-primary font-medium'
           : 'text-foreground/70 hover:text-foreground hover:bg-muted',
       )}
     >
       <span className="flex items-center">
-        {React.cloneElement(icon as React.ReactElement, { 
+        {React.cloneElement(icon as React.ReactElement, {
           size: 20,
           className: cn(
             'min-w-[20px]',
@@ -47,7 +49,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({ to, icon, label, collapsed })
           )
         })}
       </span>
-      
+
       {!collapsed && (
         <motion.span
           initial={{ opacity: 0, width: 0 }}
@@ -63,14 +65,12 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({ to, icon, label, collapsed })
 };
 
 const Sidebar: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const { collapsed, toggleSidebar } = useSidebarState(); // Use the context
   const { user, logout } = useAuth();
-  
-  const toggleSidebar = () => setCollapsed(!collapsed);
   const isSuperAdmin = user?.is_superuser;
 
   return (
-    <aside 
+    <aside
       className={cn(
         'fixed top-0 left-0 h-full z-30 bg-card border-r border-border transition-all duration-300 ease-in-out',
         collapsed ? 'w-16' : 'w-64'
@@ -78,19 +78,20 @@ const Sidebar: React.FC = () => {
     >
       <div className="flex flex-col h-full">
         {/* Header */}
-        <div className="flex items-center p-4 h-16 border-b border-border">
+        <div className="flex items-center p-4 h-16 border-b border-border ">
           {!collapsed && (
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="text-lg font-bold text-primary flex-1"
+              className="text-xl font-bold text-blue-950 flex-1 flex items-center gap-2 dark:text-blue-700"
             >
+              <img src={logo} alt="WishChat Logo" className="h-8 w-8" />
               WishChat
             </motion.h1>
           )}
-          
-          <button 
+
+          <button
             onClick={toggleSidebar}
             className="p-1.5 rounded-md text-foreground/70 hover:text-foreground hover:bg-muted transition-colors"
             aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
@@ -98,7 +99,7 @@ const Sidebar: React.FC = () => {
             {collapsed ? <Menu size={20} /> : <ChevronLeft size={20} />}
           </button>
         </div>
-        
+
         {/* Navigation */}
         <nav className="flex-1 overflow-y-auto py-4 px-2">
           <SidebarLink to="/dashboard" icon={<LayoutDashboard />} label="Dashboard" collapsed={collapsed} />
@@ -107,7 +108,7 @@ const Sidebar: React.FC = () => {
           <SidebarLink to="/subscriptions" icon={<Tag />} label="Subscriptions" collapsed={collapsed} />
           <SidebarLink to="/analytics" icon={<BarChart3 />} label="Analytics" collapsed={collapsed} />
           <SidebarLink to="/coupons" icon={<FileKey />} label="Coupons" collapsed={collapsed} />
-          
+
           {isSuperAdmin && (
             <>
               <SidebarLink to="/activity" icon={<ClipboardList />} label="Activity Logs" collapsed={collapsed} />
@@ -115,11 +116,11 @@ const Sidebar: React.FC = () => {
             </>
           )}
         </nav>
-        
+
         {/* Footer */}
         <div className="p-4 border-t border-border flex items-center justify-between">
           <ThemeToggle />
-          
+
           {!collapsed && (
             <motion.button
               initial={{ opacity: 0 }}

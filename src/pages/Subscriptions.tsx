@@ -93,8 +93,8 @@ const Subscriptions: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <h1 className="text-2xl font-semibold">Subscription Plans</h1>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 dark:text-white">
+        <h1 className="text-xl font-semibold ">Subscription Plans</h1>
         
         <button 
           onClick={() => setShowCreateForm(!showCreateForm)}

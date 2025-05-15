@@ -50,15 +50,15 @@ const Login: React.FC = () => {
         className="w-full max-w-md"
       >
         <div className="text-center mb-8">
-           <div className="inline-flex p-4 rounded-full bg-primary/10 text-primary mb-4">
+           <div className="inline-flex p-4 b text-primary mb-4">
       <img 
         src={logoImage} 
         alt="Custom Logo" 
-        width={48} 
-        height={48}
+        width={90} 
+        height={90}
       />
     </div>
-          <h1 className="text-2xl font-bold">WishChat Admin Dashboard</h1>
+          <h1 className="text-2xl font-bold dark:text-white">Welcome to Wishchat</h1>
           <p className="text-muted-foreground mt-2">Login to access the dashboard</p>
         </div>
         

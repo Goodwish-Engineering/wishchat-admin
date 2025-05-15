@@ -86,8 +86,8 @@ const Organizations: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header with search */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <h1 className="text-2xl font-semibold">Organizations</h1>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 dark:text-white">
+        <h1 className="text-xl font-semibold ">Organizations</h1>
         
         <div className="relative">
           <Search size={18} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />

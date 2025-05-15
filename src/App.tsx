@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
+import { SidebarProvider } from './contexts/SidebarContext'; // Import SidebarProvider
 import SkeletonLoader from './components/ui/Skeleton';
 
 // Layouts
@@ -76,7 +77,10 @@ const App: React.FC = () => {
         {/* Protected routes */}
         <Route path="/" element={
           <ProtectedRoute>
-            <DashboardLayout />
+            {/* Wrap DashboardLayout with SidebarProvider */}
+            <SidebarProvider>
+              <DashboardLayout />
+            </SidebarProvider>
           </ProtectedRoute>
         }>
           <Route index element={<Navigate to="/dashboard" replace />} />
